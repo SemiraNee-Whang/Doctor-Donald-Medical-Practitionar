@@ -1,0 +1,78 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@500;700;900&family=JetBrains+Mono:wght@400&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Outfit", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+
+  --color-brand-primary: #0F172A; /* Deep Navy */
+  --color-brand-secondary: #C5A059; /* Soft Gold */
+  --color-brand-bg: #F8F9FA; /* Off-White background */
+  --color-brand-surface: #FFFFFF;
+  --color-brand-border: #E2E8F0;
+  --color-brand-muted: #64748B;
+}
+
+@layer base {
+  body {
+    @apply bg-brand-bg text-brand-primary font-sans antialiased selection:bg-brand-secondary selection:text-white;
+  }
+}
+
+@layer components {
+  .section-container {
+    @apply max-w-7xl mx-auto px-6 py-24 md:py-32;
+  }
+
+  .premium-card {
+    @apply bg-white border border-brand-border rounded-[2rem] p-10 transition-all duration-500 hover:shadow-[0_20px_50px_rgba(0,0,0,0.05)] hover:-translate-y-1;
+  }
+  
+  .nav-link {
+    @apply text-sm font-medium text-brand-muted hover:text-brand-primary transition-colors duration-300 relative;
+  }
+
+  .nav-link::after {
+    @apply content-[''] absolute -bottom-1 left-0 w-0 h-[1px] bg-brand-secondary transition-all duration-300;
+  }
+
+  .nav-link:hover::after {
+    @apply w-full;
+  }
+
+  .btn-primary {
+    @apply bg-brand-primary text-white px-8 py-4 rounded-full font-semibold hover:bg-brand-secondary transition-all duration-300 active:scale-95 flex items-center justify-center gap-2;
+  }
+
+  .btn-outline {
+    @apply border border-brand-border text-brand-primary px-8 py-4 rounded-full font-semibold hover:bg-brand-surface transition-all duration-300 active:scale-95 flex items-center justify-center gap-2;
+  }
+
+  .glass-tag {
+    @apply bg-brand-surface border border-brand-border px-4 py-1.5 rounded-full text-[10px] uppercase tracking-widest font-mono font-bold text-brand-muted;
+  }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-15px); }
+}
+
+.animate-float {
+  animation: float 8s ease-in-out infinite;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #999;
+}
